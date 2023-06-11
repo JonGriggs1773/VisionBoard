@@ -18,7 +18,14 @@
     <div id = "reg-container">
         <div id = "left-col">
             <h2 class = "reg-header">Register Below</h2>
-            <form action = "/login" method = "post">
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <p>{{ message }}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %} 
+            <form action = "/confirm/register" method = "post">
                 <div class="form-style">
                     <label for="first_name"></label>
                     <input type="text" name = "first_name" class = "inputs" placeholder = "First Name">
