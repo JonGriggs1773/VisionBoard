@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='login.css') }}">
+    <title>Register</title>
+</head>
+<body>
+    <div id = "navbar">
+        <h1 id = "nav-title">>VisioBoard<</h1>
+        <div id = "nav-links">
+            <a href = "#" class = "nav-buttons">About Us</a>
+            <a href = "#" class = "nav-buttons">Resources</a>
+            <a href = "#" class = "nav-buttons">Need Help?</a>
+        </div>
+    </div>
+    <div id = "reg-container">
+        <div id = "left-col">
+            <h2 class = "reg-header">Register Below</h2>
+            <form action = "/login" method = "post">
+                <div class="form-style">
+                    <label for="first_name"></label>
+                    <input type="text" name = "first_name" class = "inputs" placeholder = "First Name">
+                </div>
+                <div class="form-style">
+                    <label for="last_name"></label>
+                    <input type="text" name = "last_name" class = "inputs" placeholder = "Last Name">
+                </div>
+                <div class="form-style">
+                    <label for="username"></label>
+                    <input type="text" name = "username" class = "inputs" placeholder = "User Name">
+                </div>
+                <div class="form-style">
+                    <label for="email"></label>
+                    <input type="email" name = "email" class = "inputs" placeholder = "Email">
+                </div>
+                <div class="form-style">
+                    <label for="password"></label>
+                    <input type="password" name = "password" class = "inputs" placeholder = "Password">
+                </div>
+                <div class="form-style">
+                    <label for="confirm_password"></label>
+                    <input type="password" name = "confirm_password" class = "inputs" placeholder = "Confirm Password">
+                </div>
+                <input type="submit" value="Login" id = "submit">
+            </form>
+        </div>
+        <div id="right-col">
+            <a href = "#" class = "reg-header">Already Have an Account?</a>
+        </div>
+    </div>
+</body>
+</html>
