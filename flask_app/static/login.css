@@ -1,0 +1,77 @@
+/* make this responsive */
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    background-color: #5CDB95;
+}
+
+.reg-header {
+    color: #05386B;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 3vh;
+}
+
+#reg-container {
+    display: flex;
+    width: 1000px;
+    margin: 0 auto;
+}
+
+#nav-title {
+    font-family: 'Courier New', Courier, monospace;
+    color: #EDF5E1;
+    align-self: center;
+}
+
+#navbar {
+    background-color: #05386B;
+    display: flex;
+    justify-content: space-evenly;
+    height: 60px;
+    width: 100%;
+}
+
+#nav-links {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 400px;
+}
+
+.nav-buttons {
+    color: #5CDB95 ;
+    height: 20px;
+    width: 100px;
+    text-align: center;
+}
+
+#left-col, #right-col {
+    margin: 20px;
+}
+
+#left-col {
+    width: 500px;
+}
+
+.inputs {
+    color: #EDF5E1 ;
+    background-color: #05386B;
+    height: 35px;
+    width: 250px;
+    border: 0.5px solid #379683;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 4px;
+}
+
+#submit {
+    height: 30px;
+    color: #EDF5E1;
+    background-color: #379683;
+    border-radius: 10px;
+    width: 80px;
+    cursor: pointer;
+}
