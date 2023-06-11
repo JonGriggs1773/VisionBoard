@@ -9,6 +9,7 @@ import re
 
 
 class User:
+    db = 'vision_board'
     def __init__(self, data):
         self.id = data['id']
         self.first_name = data['first_name']
@@ -26,13 +27,25 @@ class User:
             return False
         data = cls.parse_user_data(data)
         query = """
-                INSERT INTO users (first_name, last_name, email, password)
-                VALUES(%(first_name)s, %(last_name)s, %(email)s, %(password)s)
+                INSERT INTO users (first_name, last_name, username, email, password)
+                VALUES(%(first_name)s, %(last_name)s, %(username)s, %(email)s, %(password)s)
                 """
         user_id = connectToMySQL(cls.db).query_db(query, data)
         session['user_id'] = user_id
         session['user_name'] = f"{data['first_name']} {data['last_name']}"
         return True
+    
+    @classmethod
+    def get_user_by_email(cls, email):
+        data = {'email': email}
+        query = """
+                SELECT * FROM users
+                WHERE email = %(email)s
+                """
+        result = connectToMySQL(cls.db).query_db(query, data)
+        if result:
+            result = cls(result[0])
+        return result
 
 
     #? Validations and password hashing for user
@@ -66,6 +79,7 @@ class User:
         parsed_data = {}
         parsed_data['first_name'] = data['first_name']
         parsed_data['last_name'] = data['last_name']
+        parsed_data['username'] = data['username']
         parsed_data['email'] = data['email']
         parsed_data['password'] = bcrypt.generate_password_hash(data['password'].lower())
         return parsed_data
