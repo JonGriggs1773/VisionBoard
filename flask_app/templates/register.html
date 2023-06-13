@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='login.css') }}">
-    <title>Register</title>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/login.css') }}">
+        <script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+        <title>Register</title>
+    </head>
 <body>
     <div id = "navbar">
         <h1 id = "nav-title">>VisioBoard<</h1>
         <div id = "nav-links">
-            <a href = "#" class = "nav-buttons">About Us</a>
-            <a href = "#" class = "nav-buttons">Resources</a>
-            <a href = "#" class = "nav-buttons">Need Help?</a>
+            <a href = "#" class = "nav-buttons" onmouseover = "hoverLinks(this)" onmouseout = "hoverText(this)">About Us</a>
+            <a href = "#" class = "nav-buttons" onmouseover = "hoverLinks(this)" onmouseout = "hoverText(this)">Resources</a>
+            <a href = "#" class = "nav-buttons" onmouseover = "hoverLinks(this)" onmouseout = "hoverText(this)">Need Help?</a>
         </div>
     </div>
     <div id = "reg-container">
@@ -21,40 +22,46 @@
             {% with messages = get_flashed_messages() %}
                 {% if messages %}
                     {% for message in messages %}
-                        <p>{{ message }}</p>
+                        <p id = "errors">{{ message }}</p>
                     {% endfor %}
                 {% endif %}
             {% endwith %} 
             <form action = "/confirm/register" method = "post">
                 <div class="form-style">
-                    <label for="first_name"></label>
-                    <input type="text" name = "first_name" class = "inputs" placeholder = "First Name">
+                    <label for="first_name">
+                        <input type="text" name = "first_name" class = "inputs" placeholder = "First Name">
+                    </label>
                 </div>
                 <div class="form-style">
-                    <label for="last_name"></label>
-                    <input type="text" name = "last_name" class = "inputs" placeholder = "Last Name">
+                    <label for="last_name">
+                        <input type="text" name = "last_name" class = "inputs" placeholder = "Last Name">
+                    </label>
                 </div>
                 <div class="form-style">
-                    <label for="username"></label>
-                    <input type="text" name = "username" class = "inputs" placeholder = "User Name">
+                    <label for="username">
+                        <input type="text" name = "username" class = "inputs" placeholder = "User Name">
+                    </label>
                 </div>
                 <div class="form-style">
-                    <label for="email"></label>
-                    <input type="email" name = "email" class = "inputs" placeholder = "Email">
+                    <label for="email">
+                        <input type="email" name = "email" class = "inputs" placeholder = "Email">
+                    </label>
                 </div>
                 <div class="form-style">
-                    <label for="password"></label>
-                    <input type="password" name = "password" class = "inputs" placeholder = "Password">
+                    <label for="password">
+                        <input type="password" name = "password" class = "inputs" placeholder = "Password">
+                    </label>
                 </div>
                 <div class="form-style">
-                    <label for="confirm_password"></label>
-                    <input type="password" name = "confirm_password" class = "inputs" placeholder = "Confirm Password">
+                    <label for="confirm_password">
+                        <input type="password" name = "confirm_password" class = "inputs" placeholder = "Confirm Password">
+                    </label>
                 </div>
-                <input type="submit" value="Login" id = "submit">
+                <input type="submit" value="Register" id = "submit">
             </form>
         </div>
         <div id="right-col">
-            <a href = "#" class = "reg-header">Already Have an Account?</a>
+            <a href = "/login/page" class = "reg-header" onmouseover = "hoverText(this)" onmouseout = "hoverText(this)">Already Have an Account?</a>
         </div>
     </div>
 </body>
