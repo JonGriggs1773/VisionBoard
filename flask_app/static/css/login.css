@@ -5,7 +5,12 @@
 }
 
 body {
+    background-image: url("../images/arrow.jpg");
     background-color: #5CDB95;
+}
+
+#errors {
+    color: red;
 }
 
 .reg-header {
@@ -17,7 +22,7 @@ body {
 #reg-container {
     display: flex;
     width: 1000px;
-    margin: 0 auto;
+    margin: auto;
 }
 
 #nav-title {
@@ -48,12 +53,19 @@ body {
     text-align: center;
 }
 
+
 #left-col, #right-col {
     margin: 20px;
 }
 
 #left-col {
     width: 500px;
+}
+
+#right-col {
+    width: 800px;
+    display: flex;
+    align-items: center;
 }
 
 .inputs {

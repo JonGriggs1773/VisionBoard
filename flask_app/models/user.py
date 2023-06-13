@@ -46,6 +46,18 @@ class User:
         if result:
             result = cls(result[0])
         return result
+    
+    @classmethod
+    def get_user_by_username(cls, username):
+        data = {'username': username}
+        query = """
+                SELECT * FROM users
+                WHERE username = %(username)s
+                """
+        result = connectToMySQL(cls.db).query_db(query, data)
+        if result:
+            result = cls(result[0])
+        return result
 
 
     #? Validations and password hashing for user
@@ -83,3 +95,16 @@ class User:
         parsed_data['email'] = data['email']
         parsed_data['password'] = bcrypt.generate_password_hash(data['password'].lower())
         return parsed_data
+    
+    @staticmethod
+    def login_user(data):
+        this_user = User.get_user_by_username(data['username'])
+        if this_user:
+            print('Got this user')
+            if bcrypt.check_password_hash(this_user.password, data['password'].lower()):
+                session['user_id'] = this_user.id
+                session['user_name'] = f"{this_user.first_name} {this_user.last_name}"
+                return True
+        else:
+            flash('Your login failed.', 'login')
+            return False
