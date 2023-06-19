@@ -64,8 +64,17 @@ body {
 
 #right-col {
     width: 800px;
+    height: 800px;
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+#vision-image {
+    width: 700px;
+    height: 500px;
+    border: #05386B 20px inset;
+    margin-bottom: 20px;
 }
 
 .inputs {

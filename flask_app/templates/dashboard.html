@@ -3,10 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='login.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/dashboard.css') }}">
+    <script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}" defer></script>
     <title>Dashboard</title>
 </head>
 <body>
-    <h1>You made it, great!!!</h1>
+    <div id = "navbar">
+        <h1 id = "nav-title">>VisioBoard<</h1>
+        <div id = "nav-links">
+            <a href = "#" class = "nav-buttons" onmouseover = "hoverLinks(this)" onmouseout = "hoverText(this)">About Us</a>
+            <a href = "#" class = "nav-buttons" onmouseover = "hoverLinks(this)" onmouseout = "hoverText(this)">Resources</a>
+            <a href = "#" class = "nav-buttons" onmouseover = "hoverLinks(this)" onmouseout = "hoverText(this)">Need Help?</a>
+            <a href = "/logout" class = "nav-buttons" onmouseover = "hoverLinks(this)" onmouseout = "hoverText(this)">Log Out</a>
+        </div>
+    </div>
+    <!--! Ideas for left-col are a side nav, or other users for interaction -->
+    <div id="left-col">
+        
+    </div>
+    <!--? id="mid-col" should contain the cards with the long term goals, and should be clickable to expose the associated short term goals -->
+    <!-- Long term goals need to have image urls as object attributes -->
+    <div id="mid-col">
+
+    </div>
+
+    <div id="right-col">
+
+    </div>
 </body>
 </html>

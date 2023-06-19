@@ -9,39 +9,42 @@
     <title>Login</title>
 </head>
 <body>
-    <div id = "navbar">
-        <h1 id = "nav-title">>VisionBoard<</h1>
-        <div id = "nav-links">
-            <a href = "#" class = "nav-buttons" onmouseover = "hoverLinks(this)" onmouseout = "hoverText(this)">About Us</a>
-            <a href = "#" class = "nav-buttons" onmouseover = "hoverLinks(this)" onmouseout = "hoverText(this)">Resources</a>
-            <a href = "/" class = "nav-buttons" onmouseover = "hoverLinks(this)" onmouseout = "hoverText(this)">Sign Up</a>
+    <div id="navbar">
+        <h1 id="nav-title">>VisionBoard<</h1>
+        <div id="nav-links">
+            <a href="#" class="nav-buttons" onmouseover="hoverLinks(this)" onmouseout="hoverLinks(this)">About Us</a>
+            <a href="#" class="nav-buttons" onmouseover="hoverLinks(this)" onmouseout="hoverLinks(this)">Resources</a>
+            <a href="/" class="nav-buttons" onmouseover="hoverLinks(this)" onmouseout="hoverLinks(this)">Sign Up</a>
         </div>
     </div>
-    <div id = "reg-container">
+    <div id="reg-container">
         <div id="left-col">
             {% with messages = get_flashed_messages() %}
                 {% if messages %}
                     {% for message in messages %}
-                        <p id = "errors">{{ message }}</p>
+                        <p id="errors">{{ message }}</p>
                     {% endfor %}
                 {% endif %}
             {% endwith %} 
-            <h2 class = "reg-header">Login Below</h2>
-            <div class = "form-card">
-                <form action = "/login" method = "post">
+            <h2 class="reg-header">Login Below</h2>
+            <div class="form-card">
+                <form action="/login" method="post">
                     <div>
-                        <label for = "username">
-                            <input type = "text" name = "username" class = "inputs" placeholder = "Username">
+                        <label for="username">
+                            <input type="text" name="username" class="inputs" placeholder="Username">
                         </label>
                     </div>
                     <div>
-                        <label for = "password">
-                            <input type = "password" name = "password" class = "inputs" placeholder = "Password">
+                        <label for="password">
+                            <input type="password" name="password" class="inputs" placeholder="Password">
                         </label>
                     </div>
-                    <input type="submit" value="Login" id = "submit">
+                    <input type="submit" value="Login" id="submit">
                 </form>
             </div>
+        </div>
+        <div id="right-col">
+            <img src="{{ url_for('static', filename = 'images/visionboard.png') }}" alt="VisionBoard Image" id="vision-image">
         </div>
     </div>
 </body>

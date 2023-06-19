@@ -17,7 +17,7 @@ def sumbit_registration():
     else:
         return redirect('/')
     
-@app.route("/login", methods = ['POST'])
+@app.route('/login', methods = ['POST'])
 def login_user():
     if User.login_user(request.form):
         return redirect('/dashboard')
@@ -32,3 +32,8 @@ def render_dashboard():
     else:
         print(session['user_id'])
         return render_template("dashboard.html")
+    
+@app.route('/logout')
+def logout_user():
+    session.clear()
+    return redirect('/')
