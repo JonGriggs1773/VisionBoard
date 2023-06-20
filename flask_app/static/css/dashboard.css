@@ -1,0 +1,37 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    background-image: url("../images/arrow.jpg");
+    background-color: #5CDB95;
+}
+
+#nav-title {
+    font-family: 'Courier New', Courier, monospace;
+    color: #EDF5E1;
+    align-self: center;
+}
+
+#navbar {
+    background-color: #05386B;
+    display: flex;
+    justify-content: space-evenly;
+    height: 60px;
+    width: 100%;
+}
+
+#nav-links {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 400px;
+}
+
+.nav-buttons {
+    color: #5CDB95 ;
+    height: 20px;
+    width: 100px;
+    text-align: center;
+}
