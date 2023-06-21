@@ -2,6 +2,7 @@ from flask_app import app
 from flask_app.config.mysqlconnection import connectToMySQL
 from flask import flash, session
 from flask_bcrypt import Bcrypt
+import pprint
 bcrypt = Bcrypt(app)
 import re
 #! To get these comments color coded, download the "Better Comments" extention in VS Code
@@ -46,6 +47,21 @@ class User:
         if result:
             result = cls(result[0])
         return result
+    
+    @classmethod
+    def get_user_by_id(cls, id):
+        data = {'id': id}
+        query = """
+                SELECT * FROM users
+                WHERE id = %(id)s
+                """
+        result = connectToMySQL(cls.db).query_db(query, data)
+        pprint.pp(result)
+        if result:
+            user = cls(result[0])
+            return user
+        else:
+            return result
     
     @classmethod
     def get_user_by_username(cls, username):

@@ -3,9 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/login.css') }}">
+    <script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}" defer></script>
     <title>Add LTG's</title>
 </head>
 <body>
-    
+    <div id="navbar">
+        <h1 id="nav-title">>VisionBoard<</h1>
+        <div id="nav-links">
+            <a href="#" class="nav-buttons" onmouseover="hoverLinks(this)" onmouseout="hoverLinks(this)">About Us</a>
+            <a href="#" class="nav-buttons" onmouseover="hoverLinks(this)" onmouseout="hoverLinks(this)">Resources</a>
+            <a href="/dashboard" class="nav-buttons" onmouseover="hoverLinks(this)" onmouseout="hoverLinks(this)">Home</a>
+        </div>
+    </div>
+    <div id="form">
+        <form action="/ltg/submit" method="post">
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <p id = "errors">{{ message }}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %} 
+            <input type="hidden" name="user_id" value="{{user.id}}">
+            <input type="hidden" name="is_complete" value="No">
+            <div>
+                <label for="title">
+                    <input type="text" name="title" id="title" placeholder="Title...">
+                </label>
+            </div>
+            <div>
+                <label for="description">
+                    <textarea name="description" id="description"  placeholder="Description..." cols="30" rows="10"></textarea>
+                </label>
+            </div>
+            <div>
+                <label for="goal_date">
+                    <input type="date" name="goal_date" id="goal_date">
+                </label>
+            </div>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
 </body>
 </html>
