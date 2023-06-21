@@ -17,6 +17,7 @@ function hoverText(element) {
 }
 
 function hoverLinks(element) {
+    console.log(element.style.shadow)
     if (element.style.textShadow === "") {
         element.style.textShadow = "5px 5px 5px black"
         element.style.position = "relative"

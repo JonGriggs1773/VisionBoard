@@ -16,8 +16,9 @@
             <a href="/dashboard" class="nav-buttons" onmouseover="hoverLinks(this)" onmouseout="hoverLinks(this)">Home</a>
         </div>
     </div>
-    <div id="form">
-        <form action="/ltg/submit" method="post">
+    <div id="ltg-container">
+        <form action="/ltg/submit" method="post" id="ltg-form">
+            <h3 class = "reg-header">Add you Long Term Goal Below</h3>
             {% with messages = get_flashed_messages() %}
                 {% if messages %}
                     {% for message in messages %}
@@ -29,20 +30,20 @@
             <input type="hidden" name="is_complete" value="No">
             <div>
                 <label for="title">
-                    <input type="text" name="title" id="title" placeholder="Title...">
+                    <input class="inputs" type="text" name="title" id="title" placeholder="Title...">
                 </label>
             </div>
             <div>
                 <label for="description">
-                    <textarea name="description" id="description"  placeholder="Description..." cols="30" rows="10"></textarea>
+                    <textarea class="inputs" name="description" id="description"  placeholder="Description..." cols="30" rows="10"></textarea>
                 </label>
             </div>
             <div>
                 <label for="goal_date">
-                    <input type="date" name="goal_date" id="goal_date">
+                    <input class="inputs" type="date" name="goal_date" id="goal_date">
                 </label>
             </div>
-            <input type="submit" value="Submit">
+            <input type="submit" value="Submit" id="submit">
         </form>
     </div>
 </body>
