@@ -26,7 +26,7 @@
                     {% endfor %}
                 {% endif %}
             {% endwith %} 
-            <form action = "/confirm/register" method = "post">
+            <form action = "/confirm/register" method = "post" >
                 <div class="form-style">
                     <label for="first_name">
                         <input type="text" name = "first_name" class = "inputs" placeholder = "First Name">
@@ -39,29 +39,29 @@
                 </div>
                 <div class="form-style">
                     <label for="username">
-                        <input type="text" name = "username" class = "inputs" placeholder = "User Name">
+                        <input type="text" name="username" class="inputs" placeholder="User Name">
                     </label>
                 </div>
                 <div class="form-style">
                     <label for="email">
-                        <input type="email" name = "email" class = "inputs" placeholder = "Email">
+                        <input type="email" name="email" class="inputs" placeholder="Email">
                     </label>
                 </div>
                 <div class="form-style">
                     <label for="password">
-                        <input type="password" name = "password" class = "inputs" placeholder = "Password">
+                        <input type="password" name="password" class="inputs" placeholder="Password">
                     </label>
                 </div>
                 <div class="form-style">
                     <label for="confirm_password">
-                        <input type="password" name = "confirm_password" class = "inputs" placeholder = "Confirm Password">
+                        <input type="password" name="confirm_password" class="inputs" placeholder="Confirm Password">
                     </label>
                 </div>
-                <input type="submit" value="Register" id = "submit">
+                <input type="submit" value="Register" id="submit">
             </form>
         </div>
         <div id="right-col">
-            <a href = "/login/page" class = "reg-header" onmouseover = "hoverText(this)" onmouseout = "hoverText(this)">Already Have an Account?</a>
+            <a href="/login/page" class="reg-header" onmouseover="hoverText(this)" onmouseout="hoverText(this)">Already Have an Account?</a>
             <img src="{{ url_for('static', filename = 'images/visionboard.png') }}" alt="VisionBoard Image" id="vision-image">
         </div>
     </div>

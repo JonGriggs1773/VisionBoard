@@ -25,6 +25,19 @@ body {
     margin: auto;
 }
 
+#ltg-container {
+    width: 1000px;
+    margin: 0 auto;
+}
+
+#ltg-form {
+    display: flex;
+    width: 600px;
+    flex-direction: column;
+    align-content: center;
+    margin: 25px auto;
+}
+
 #nav-title {
     font-family: 'Courier New', Courier, monospace;
     color: #EDF5E1;
