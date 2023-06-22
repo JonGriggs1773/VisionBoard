@@ -30,7 +30,7 @@ body {
     margin: 0 auto;
 }
 
-#ltg-form {
+#g-form {
     display: flex;
     width: 600px;
     flex-direction: column;

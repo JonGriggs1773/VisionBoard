@@ -19,7 +19,9 @@
     </div>
     <!--! Ideas for left-col are a side nav, or other users for interaction -->
     <div id="left-col">
-        
+        {% for ltg in user.long_term_goals %}
+            <p>{{ltg.title}}</p>
+        {% endfor %}
     </div>
     <!--? id="mid-col" should contain the cards with the long term goals, and should be clickable to expose the associated short term goals -->
     <!-- Long term goals need to have image urls as object attributes -->
