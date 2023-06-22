@@ -1,6 +1,7 @@
 from flask_app import app
 from flask_app.models.user import User
 from flask import render_template, redirect, request, session, flash
+import pprint
 
 @app.route('/')
 def register_page():
@@ -31,7 +32,10 @@ def render_dashboard():
         return redirect('/')
     else:
         print(session['user_id'])
-        return render_template("dashboard.html")
+        user = User.get_user_with_ltgs_by_user_id(session['user_id'])
+        for ltg in user.long_term_goals:
+            pprint.pp(ltg.title)
+        return render_template("dashboard.html", user = user)
     
 @app.route('/logout')
 def logout_user():

@@ -1,5 +1,6 @@
 from flask_app import app
 from flask_app.config.mysqlconnection import connectToMySQL
+from flask_app.models.long_term_goal import LTG
 from flask import flash, session
 from flask_bcrypt import Bcrypt
 import pprint
@@ -74,6 +75,32 @@ class User:
         if result:
             result = cls(result[0])
         return result
+    
+    @classmethod
+    def get_user_with_ltgs_by_user_id(cls, id):
+        data = {'id': id}
+        query = """
+                SELECT * FROM users 
+                LEFT JOIN long_term_goals
+                ON users.id = long_term_goals.user_id
+                WHERE users.id = %(id)s
+                """
+        results = connectToMySQL(cls.db).query_db(query, data)
+        pprint.pp(results)
+        one_user = cls(results[0])
+        for ltg in results:
+            ltg_data = {
+                'id': ltg['long_term_goals.id'],
+                'title': ltg['title'],
+                'description': ltg['description'],
+                'goal_date': ltg['goal_date'],
+                'is_complete': ltg['is_complete'],
+                'user_id': ltg['user_id'],
+                'created_at': ltg['long_term_goals.created_at'],
+                'updated_at': ltg['long_term_goals.updated_at']
+            }
+            one_user.long_term_goals.append(LTG(ltg_data))
+        return one_user
 
 
     #? Validations and password hashing for user
