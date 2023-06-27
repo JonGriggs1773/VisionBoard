@@ -34,11 +34,6 @@ def render_dashboard():
     else:
         print(session['user_id'])
         user = User.get_user_with_ltgs_by_user_id(session['user_id'])
-        for ltg in user.long_term_goals:
-            print("Look Here: ", ltg.image)
-            #? Converting each image in ltg's from byte string to regualr string so the file can be read properly in the templates
-            ltg.image = ltg.image.decode("utf-8")
-            print("AFTER CHANGES: ", ltg.image)
         return render_template("dashboard.html", user = user)
     
 @app.route('/logout')
