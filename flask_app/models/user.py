@@ -28,7 +28,7 @@ class User:
         if not cls.validate_user(data):
             return False
         data = cls.parse_user_data(data)
-        query = """
+        query = """  
                 INSERT INTO users (first_name, last_name, username, email, password)
                 VALUES(%(first_name)s, %(last_name)s, %(username)s, %(email)s, %(password)s)
                 """
@@ -95,11 +95,13 @@ class User:
                 'description': ltg['description'],
                 'goal_date': ltg['goal_date'],
                 'is_complete': ltg['is_complete'],
+                'image': ltg['image'],
                 'user_id': ltg['user_id'],
                 'created_at': ltg['long_term_goals.created_at'],
                 'updated_at': ltg['long_term_goals.updated_at']
             }
             one_user.long_term_goals.append(LTG(ltg_data))
+        print("HERE: ", one_user.long_term_goals)
         return one_user
 
 

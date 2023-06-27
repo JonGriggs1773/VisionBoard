@@ -5,6 +5,9 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
 -- -----------------------------------------------------
+-- Schema mydb
+-- -----------------------------------------------------
+-- -----------------------------------------------------
 -- Schema vision_board
 -- -----------------------------------------------------
 DROP SCHEMA IF EXISTS `vision_board` ;
@@ -25,10 +28,12 @@ CREATE TABLE IF NOT EXISTS `vision_board`.`users` (
   `email` VARCHAR(255) NOT NULL,
   `password` VARCHAR(255) NOT NULL,
   `username` VARCHAR(255) NOT NULL,
-  `created_at` DATETIME NOT NULL DEFAULT NOW(),
-  `updated_at` DATETIME NOT NULL DEFAULT NOW() ON UPDATE NOW(),
+  `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`))
-ENGINE = InnoDB;
+ENGINE = InnoDB
+AUTO_INCREMENT = 2
+DEFAULT CHARACTER SET = utf8mb3;
 
 
 -- -----------------------------------------------------
@@ -39,9 +44,10 @@ CREATE TABLE IF NOT EXISTS `vision_board`.`long_term_goals` (
   `title` VARCHAR(45) NOT NULL,
   `description` VARCHAR(255) NOT NULL,
   `goal_date` DATE NOT NULL,
-  `is_complete` ENUM("Yes", "No") NOT NULL,
-  `created_at` DATETIME NOT NULL DEFAULT NOW(),
-  `updated_at` DATETIME NOT NULL DEFAULT NOW() ON UPDATE NOW(),
+  `is_complete` ENUM('Yes', 'No') NOT NULL,
+  `image` BLOB NOT NULL,
+  `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `user_id` INT NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_long_term_goals_users1_idx` (`user_id` ASC) VISIBLE,
@@ -50,7 +56,9 @@ CREATE TABLE IF NOT EXISTS `vision_board`.`long_term_goals` (
     REFERENCES `vision_board`.`users` (`id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
-ENGINE = InnoDB;
+ENGINE = InnoDB
+AUTO_INCREMENT = 7
+DEFAULT CHARACTER SET = utf8mb3;
 
 
 -- -----------------------------------------------------
@@ -61,9 +69,9 @@ CREATE TABLE IF NOT EXISTS `vision_board`.`short_term_goals` (
   `title` VARCHAR(45) NOT NULL,
   `description` VARCHAR(255) NOT NULL,
   `goal_date` DATE NOT NULL,
-  `is_complete` ENUM("Yes", "No") NOT NULL,
-  `created_at` DATETIME NOT NULL DEFAULT NOW(),
-  `updated_at` DATETIME NOT NULL DEFAULT NOW() ON UPDATE NOW(),
+  `is_complete` ENUM('Yes', 'No') NOT NULL,
+  `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `long_term_goal_id` INT NOT NULL,
   `user_id` INT NOT NULL,
   PRIMARY KEY (`id`),
@@ -79,7 +87,8 @@ CREATE TABLE IF NOT EXISTS `vision_board`.`short_term_goals` (
     REFERENCES `vision_board`.`users` (`id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
-ENGINE = InnoDB;
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb3;
 
 
 -- -----------------------------------------------------
@@ -90,9 +99,9 @@ CREATE TABLE IF NOT EXISTS `vision_board`.`tasks` (
   `title` VARCHAR(45) NOT NULL,
   `description` VARCHAR(255) NOT NULL,
   `goal_date` DATE NOT NULL,
-  `is_complete` ENUM("Yes", "No") NOT NULL,
-  `created_at` DATETIME NULL DEFAULT NOW(),
-  `updated_at` DATETIME NULL DEFAULT NOW() ON UPDATE NOW(),
+  `is_complete` ENUM('Yes', 'No') NOT NULL,
+  `created_at` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` DATETIME NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `short_term_goal_id` INT NOT NULL,
   `user_id` INT NOT NULL,
   PRIMARY KEY (`id`),
@@ -108,7 +117,8 @@ CREATE TABLE IF NOT EXISTS `vision_board`.`tasks` (
     REFERENCES `vision_board`.`users` (`id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
-ENGINE = InnoDB;
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb3;
 
 
 SET SQL_MODE=@OLD_SQL_MODE;

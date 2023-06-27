@@ -5,6 +5,7 @@ from flask_bcrypt import Bcrypt
 import pprint
 bcrypt = Bcrypt(app)
 import re
+import pickle
 
 
 class LTG:
@@ -15,6 +16,7 @@ class LTG:
         self.description = data['description']
         self.goal_date = data['goal_date']
         self.is_complete = data['is_complete']
+        self.image = data['image']
         self.user_id = data['user_id']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
@@ -22,13 +24,13 @@ class LTG:
         self.stg = []
 
     @classmethod
-    def create_long_term_goal(cls, data):
+    def create_long_term_goal(cls, data, file):
         if not cls.ltg_goal_validations(data):
             return False
-        good_data = cls.parce_ltg_data(data)
+        good_data = cls.parce_ltg_data(data, file)
         query = """
-                INSERT INTO long_term_goals (title, description, goal_date, is_complete, user_id)
-                VALUES (%(title)s, %(description)s, %(goal_date)s, %(is_complete)s, %(user_id)s)
+                INSERT INTO long_term_goals (title, description, goal_date, is_complete, image, user_id)
+                VALUES (%(title)s, %(description)s, %(goal_date)s, %(is_complete)s, %(image)s, %(user_id)s)
                 """
         results = connectToMySQL(cls.db).query_db(query, good_data)
         pprint.pp(results)
@@ -52,11 +54,13 @@ class LTG:
         return is_valid
     
     @staticmethod
-    def parce_ltg_data(data):
+    def parce_ltg_data(form_data, filename):
+        print("Parced File Name: ", filename)
         parced_data = {}
-        parced_data['title'] = data['title']
-        parced_data['description'] = data['description']
-        parced_data['goal_date'] = data['goal_date']
-        parced_data['is_complete'] = data['is_complete']
-        parced_data['user_id'] = data['user_id']
+        parced_data['title'] = form_data['title']
+        parced_data['description'] = form_data['description']
+        parced_data['goal_date'] = form_data['goal_date']
+        parced_data['is_complete'] = form_data['is_complete']
+        parced_data['image'] = filename
+        parced_data['user_id'] = form_data['user_id']
         return parced_data
