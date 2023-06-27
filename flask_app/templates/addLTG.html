@@ -17,7 +17,7 @@
         </div>
     </div>
     <div id="ltg-container">
-        <form action="/ltg/submit" method="post" id="g-form">
+        <form action="/ltg/submit" method="post" enctype="multipart/form-data" id="g-form">
             <h3 class = "reg-header">Add you Long Term Goal Below</h3>
             {% with messages = get_flashed_messages() %}
                 {% if messages %}
@@ -41,6 +41,11 @@
             <div>
                 <label for="goal_date">
                     <input class="inputs" type="date" name="goal_date" id="goal_date">
+                </label>
+            </div>
+            <div>
+                <label for="image">
+                    <input class="inputs" type="file" name="image" id="image">
                 </label>
             </div>
             <input type="submit" value="Submit" id="submit">
