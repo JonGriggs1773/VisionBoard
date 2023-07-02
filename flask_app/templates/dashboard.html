@@ -31,6 +31,7 @@
                     <h4>{{ ltg.title }}</h4>
                     <p>{{ ltg.goal_date }}</p>
                     <p>Complete: {{ ltg.is_complete }}</p>
+                    <a href="/add_stg/{{ltg.id}}"><button>Add STG</button></a>
                 </div>
             {% endfor %}
         </div>

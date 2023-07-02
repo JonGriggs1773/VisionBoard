@@ -26,7 +26,7 @@ class STG:
 
     @classmethod
     def create_short_term_goal(cls, data):
-        if not cls.short_term_goal_validations:
+        if not cls.short_term_goal_validations(data):
             return False
         good_data = cls.parce_stg_data(data)
         query = """
@@ -47,10 +47,8 @@ class STG:
         if len(data['description']) <= 3:
             flash('Description must be at least 3 characters long')
             is_valid = False
-        if data['is_complete'] == "Yes" or data['is_complete'] == "No":
-            print("Is_complete should be good", data['is_complete'])
-        else:
-            flash("Completion can only be either 'Yes' or 'No'")
+        if not data['goal_date']:
+            flash('Goal date must be a valid date')
             is_valid = False
         return is_valid
     
