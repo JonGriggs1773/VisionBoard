@@ -4,8 +4,6 @@ from flask import flash, session
 from flask_bcrypt import Bcrypt
 import pprint
 bcrypt = Bcrypt(app)
-import re
-import pickle
 
 
 class LTG:

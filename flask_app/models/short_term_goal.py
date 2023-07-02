@@ -8,6 +8,7 @@ import re
 
 
 class STG:
+    db = "vision_board"
     def __init__(self, data):
         self.id = data['id']
         self.title = data['title']
@@ -36,7 +37,7 @@ class STG:
         pprint.pp(results)
         return results
     
-    #* Validations for Long Term Goals
+    #* Validations for Short Term Goals
     @staticmethod
     def short_term_goal_validations(data):
         is_valid = True
