@@ -33,6 +33,19 @@ class LTG:
         results = connectToMySQL(cls.db).query_db(query, good_data)
         pprint.pp(results)
         return results
+    
+    @classmethod
+    def get_ltg_by_id(cls,id):
+        data = {"id":id}
+        query = """
+                SELECT *
+                FROM long_term_goals
+                WHERE id = %(id)s
+                """
+        results = connectToMySQL(cls.db).query_db(query, data)
+        pprint.pp(results)
+        ltg = cls(results[0])
+        return ltg
 
 #* Validations for Long Term Goals
     @staticmethod

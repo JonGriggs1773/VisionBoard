@@ -6,6 +6,8 @@ import pickle
 
 @app.route('/')
 def register_page():
+    if "user_id" in session:
+        return redirect('/dashboard')
     return render_template('register.html')
 
 @app.route('/login/page')
