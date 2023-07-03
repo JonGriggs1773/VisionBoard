@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/dashboard.css') }}">
+    <script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+    <title>All Short Term Goals</title>
+</head>
+<body>
+    <div id = "navbar">
+        <h1 id = "nav-title">>VisionBoard<</h1>
+        <div id = "nav-links">
+            <a href = "#" class = "nav-buttons" onmouseover = "hoverLinks(this)" onmouseout = "hoverLinks(this)">About Us</a>
+            <a href = "#" class = "nav-buttons" onmouseover = "hoverLinks(this)" onmouseout = "hoverLinks(this)">Resources</a>
+            <a href = "/dashboard" class = "nav-buttons" onmouseover = "hoverLinks(this)" onmouseout = "hoverLinks(this)">Home</a>
+            <a href = "/logout" class = "nav-buttons" onmouseover = "hoverLinks(this)" onmouseout = "hoverLinks(this)">Log Out</a>
+        </div>
+    </div>
+    <div id="container">
+        <h1>{{ ltg.title }}</h1>
+    </div>
+</body>
+</html>

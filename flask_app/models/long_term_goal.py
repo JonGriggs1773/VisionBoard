@@ -1,5 +1,6 @@
 from flask_app import app
 from flask_app.config.mysqlconnection import connectToMySQL
+from flask_app.models.short_term_goal import STG
 from flask import flash, session
 from flask_bcrypt import Bcrypt
 import pprint
@@ -46,6 +47,49 @@ class LTG:
         pprint.pp(results)
         ltg = cls(results[0])
         return ltg
+    
+    @classmethod
+    def get_ltg_with_all_stgs(cls, id):
+        data = {'id': id}
+        query = """
+                SELECT *
+                FROM long_term_goals
+                LEFT JOIN short_term_goals
+                ON long_term_goals.id = short_term_goals.long_term_goal_id
+                WHERE long_term_goals.id = %(id)s
+                """
+        results = connectToMySQL(cls.db).query_db(query, data)
+        pprint.pp(results)
+        if results:
+            ltg = cls(results[0])
+            for stg in results:
+                stg_data = {
+                    'id': stg['short_term_goals.id'],
+                    'title': stg['title'],
+                    'description': stg['description'],
+                    'goal_date': stg['goal_date'],
+                    'is_complete': stg['is_complete'],
+                    'user_id': stg['user_id'],
+                    'long_term_goal_id': stg['long_term_goal_id'],
+                    'created_at': stg['short_term_goals.created_at'],
+                    'updated_at': stg['short_term_goals.updated_at']
+                }
+                ltg.stg.append(STG(stg_data))
+            return ltg
+        else:
+            print("Results were empty bro! Figure it out!")
+            return False
+        
+    @classmethod
+    def delete_ltg_by_id(cls, id):
+        data = {'id': id}
+        query = """
+                DELETE
+                FROM long_term_goals
+                WHERE id = %(id)s
+                """
+        result = connectToMySQL(cls.db).query_db(query, data)
+        return result
 
 #* Validations for Long Term Goals
     @staticmethod

@@ -9,7 +9,7 @@
 </head>
 <body>
     <div id = "navbar">
-        <h1 id = "nav-title">>VisioBoard<</h1>
+        <h1 id = "nav-title">>VisionBoard<</h1>
         <div id = "nav-links">
             <a href = "#" class = "nav-buttons" onmouseover = "hoverLinks(this)" onmouseout = "hoverLinks(this)">About Us</a>
             <a href = "#" class = "nav-buttons" onmouseover = "hoverLinks(this)" onmouseout = "hoverLinks(this)">Resources</a>
@@ -19,23 +19,24 @@
     </div>
     <!--! Ideas for left-col are a side nav, or other users for interaction -->
     <div id="container">
-        <div id="left-col">
-            
-        </div>
-        <!--? id="mid-col" should contain the cards with the long term goals, and should be clickable to expose the associated short term goals -->
-        <!-- Long term goals need to have image urls as object attributes -->
+        <!--! mid-col is left-col now -->
         <div id="mid-col">
             {% for ltg in user.long_term_goals %}
-                <div class="ltg-card">
-                    <img src="{{ url_for('static', filename='uploads/' ~ ltg.image) }}" alt="LTG Image" class="ltg-images">
-                    <h4>{{ ltg.title }}</h4>
-                    <p>{{ ltg.goal_date }}</p>
-                    <p>Complete: {{ ltg.is_complete }}</p>
-                    <a href="/add_stg/{{ltg.id}}"><button>Add STG</button></a>
+                <div class="full-card">
+                    <div class="ltg-card" onmouseover = "hoverText(this)" onmouseout = "hoverText(this)" onclick="navigateToRoute(`{{ltg.id}}`)">
+                        <img src="{{ url_for('static', filename='uploads/' ~ ltg.image) }}" alt="LTG Image" class="ltg-images">
+                        <h4>{{ ltg.title }}</h4>
+                        <p>{{ ltg.goal_date }}</p>
+                        <p>Complete: {{ ltg.is_complete }}</p>
+                    </div>
+                    <div id="btn-div">
+                        <a href="/add_stg/{{ltg.id}}"><button class="submit">Add Short Term Goals</button></a>
+                        <a href="/view/all/{{ltg.id}}"><button class="submit">Short Term Goals</button></a>
+                    </div>
                 </div>
-            {% endfor %}
+                {% endfor %}
         </div>
-        
+        <!--? Need ideas for the right-col -->
         <div id="right-col">
             
         </div>

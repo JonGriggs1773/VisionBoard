@@ -29,3 +29,17 @@ function hoverLinks(element) {
         element.style.bottom = ""
     }
 }
+
+function navigateToRoute(id) {
+    console.log(id)
+    fetch(`/view/ltg/${id}`, {
+        method: 'GET'
+    })
+    .then(response => {
+        window.location.href = response.url
+    })
+    .catch(error => {
+        console.error('Error: ', error)
+    })
+    
+}
