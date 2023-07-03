@@ -116,3 +116,24 @@ body {
     justify-content: space-evenly;
 }
 
+table, th, td {
+    border: 2px solid #05386B;
+}
+table {
+    width: 700px;
+}
+
+th, td {
+    width: 100px;
+    padding: 2.5px;
+}
+
+.title {
+    color: #05386B;
+    font-family: 'Courier New', Courier, monospace;
+    margin-bottom: 20px;
+}
+
+#description {
+    width: 300px;
+}
