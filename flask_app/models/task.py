@@ -7,9 +7,7 @@ bcrypt = Bcrypt(app)
 
 
 class Task:
-    
     db = "vision_board"
-    
     def __init__(self, data):
         self.id = data['id']
         self.title = data['title']

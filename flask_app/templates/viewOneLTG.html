@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/dashboard.css') }}">
+    <script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+    <title>View One LTG</title>
+</head>
+<body>
+    <div id = "navbar">
+        <h1 id = "nav-title">>VisionBoard<</h1>
+        <div id = "nav-links">
+            <a href = "#" class = "nav-buttons" onmouseover = "hoverLinks(this)" onmouseout = "hoverLinks(this)">About Us</a>
+            <a href = "#" class = "nav-buttons" onmouseover = "hoverLinks(this)" onmouseout = "hoverLinks(this)">Resources</a>
+            <a href = "/dashboard" class = "nav-buttons" onmouseover = "hoverLinks(this)" onmouseout = "hoverLinks(this)">Home</a>
+            <a href = "/logout" class = "nav-buttons" onmouseover = "hoverLinks(this)" onmouseout = "hoverLinks(this)">Log Out</a>
+        </div>
+    </div>
+    <div id="container">
+        <div class="view-one">
+            <h2>{{ ltg.title }}</h2>
+            <img src="{{ url_for('static', filename='uploads/' ~ ltg.image) }}" alt="LTG Image" class="one-image">
+            <h3>{{ ltg.description }}</h3>
+            <p>Deadline: {{ ltg.goal_date }}</p>
+            <div id="btn-div" class="view-btn">
+                <a href="/delete/ltg/{{ ltg.id }}"><button onclick="alert('Are you sure you\'ve reahced this milestone?')" class="reg-btn">Mark As Complete?</button></a>
+                <a href="/edit/ltg/page/{{ ltg.id }}"><button class="reg-btn">Edit LTG</button></a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

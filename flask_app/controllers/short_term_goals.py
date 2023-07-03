@@ -27,3 +27,8 @@ def submit_stg():
     else:
         ltg_id = session['ltg_id']
         return redirect(f'/add_stg/{ltg_id}')
+    
+@app.route('/view/all/<int:id>')
+def view_STG_page(id):
+    ltg = LTG.get_ltg_with_all_stgs(id)
+    return render_template('allSTG.html', ltg=ltg)

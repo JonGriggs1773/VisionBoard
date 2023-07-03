@@ -38,3 +38,13 @@ def create_ltg():
         return redirect('/dashboard')
     else:
         return redirect('/ltg/form')
+    
+@app.route('/view/ltg/<int:id>')
+def view_one_ltg_page(id):
+    ltg = LTG.get_ltg_by_id(id)
+    return render_template('viewOneLTG.html', ltg=ltg)
+
+@app.route('/delete/ltg/<int:id>')
+def delete_ltg(id):
+    LTG.delete_ltg_by_id(id)
+    return redirect('/dashboard')
