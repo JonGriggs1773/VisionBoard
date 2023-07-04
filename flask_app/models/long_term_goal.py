@@ -65,10 +65,10 @@ class LTG:
             for stg in results:
                 stg_data = {
                     'id': stg['short_term_goals.id'],
-                    'title': stg['title'],
-                    'description': stg['description'],
-                    'goal_date': stg['goal_date'],
-                    'is_complete': stg['is_complete'],
+                    'title': stg['short_term_goals.title'],
+                    'description': stg['short_term_goals.description'],
+                    'goal_date': stg['short_term_goals.goal_date'],
+                    'is_complete': stg['short_term_goals.is_complete'],
                     'user_id': stg['user_id'],
                     'long_term_goal_id': stg['long_term_goal_id'],
                     'created_at': stg['short_term_goals.created_at'],

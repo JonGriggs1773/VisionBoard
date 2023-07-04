@@ -24,8 +24,9 @@
             <h3>{{ ltg.description }}</h3>
             <p>Deadline: {{ ltg.goal_date }}</p>
             <div id="btn-div" class="view-btn">
-                <a href="/delete/ltg/{{ ltg.id }}"><button onclick="alert('Are you sure you\'ve reahced this milestone?')" class="reg-btn">Mark As Complete?</button></a>
+                <a href="/delete/ltg/{{ ltg.id }}"><button onclick="alert('Are you sure you\'ve reached this milestone?')" class="reg-btn">Mark As Complete?</button></a>
                 <a href="/edit/ltg/page/{{ ltg.id }}"><button class="reg-btn">Edit LTG</button></a>
+                <a href="/add_stg/{{ ltg.id }}"><button class="reg-btn">Add STG</button></a>
             </div>
         </div>
     </div>

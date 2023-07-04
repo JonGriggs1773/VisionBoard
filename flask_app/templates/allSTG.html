@@ -18,7 +18,23 @@
         </div>
     </div>
     <div id="container">
-        <h1>{{ ltg.title }}</h1>
+        <h1 class="title">Short Term Goals with you goal: {{ ltg.title }}</h1>
+        <table>
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Deadline</th>
+                <th>Completion Status</th>
+            </tr>
+            {% for stg in ltg.stg %}
+                <tr>
+                    <td>{{ stg.title }}</td>
+                    <td id="description">{{ stg.description }}</td>
+                    <td>{{ stg.goal_date }}</td>
+                    <td>{{ stg.is_complete }}</td>
+                </tr>
+            {% endfor %}
+        </table>
     </div>
 </body>
 </html>

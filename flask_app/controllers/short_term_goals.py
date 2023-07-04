@@ -18,12 +18,9 @@ def add_stg_form(id):
     
 @app.route('/stg/submit', methods = ['POST'])
 def submit_stg():
-    
-    
     if STG.create_short_term_goal(request.form):
         session.pop('ltg_id', None)
         return redirect('/dashboard')
-    
     else:
         ltg_id = session['ltg_id']
         return redirect(f'/add_stg/{ltg_id}')
