@@ -98,6 +98,7 @@ body {
     flex-direction: column;
     align-items: center;
     margin: 10px;
+    cursor: pointer;
 }
 
 .one-image {

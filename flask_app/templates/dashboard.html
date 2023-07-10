@@ -21,20 +21,24 @@
     <div id="container">
         <!--! mid-col is left-col now -->
         <div id="mid-col">
-            {% for ltg in user.long_term_goals %}
-                <div class="full-card">
-                    <div class="ltg-card" onmouseover = "hoverText(this)" onmouseout = "hoverText(this)" onclick="navigateToRoute(`{{ltg.id}}`)">
-                        <img src="{{ url_for('static', filename='uploads/' ~ ltg.image) }}" alt="LTG Image" class="ltg-images">
-                        <h4>{{ ltg.title }}</h4>
-                        <p>{{ ltg.goal_date }}</p>
-                        <p>Complete: {{ ltg.is_complete }}</p>
+            {% if user.long_term_goals[0]['title'] == None %}
+                <h3>Click <a href="/ltg/form">here</a> to add a Long Term Goal (LTG)</h3>
+            {% else %}
+                {% for ltg in user.long_term_goals %}
+                    <div class="full-card">
+                        <div class="ltg-card" onmouseover = "hoverText(this)" onmouseout = "hoverText(this)" onclick="navigateToRoute(`{{ltg.id}}`)">
+                            <img src="{{ url_for('static', filename='uploads/' ~ ltg.image) }}" alt="LTG Image" class="ltg-images">
+                            <h4>{{ ltg.title }}</h4>
+                            <p>{{ ltg.goal_date }}</p>
+                            <p>Complete: {{ ltg.is_complete }}</p>
+                        </div>
+                        <div id="btn-div">
+                            <a href="/add_stg/{{ltg.id}}"><button class="submit">Add Short Term Goals</button></a>
+                            <a href="/view/all/{{ltg.id}}"><button class="submit">Short Term Goals</button></a>
+                        </div>
                     </div>
-                    <div id="btn-div">
-                        <a href="/add_stg/{{ltg.id}}"><button class="submit">Add Short Term Goals</button></a>
-                        <a href="/view/all/{{ltg.id}}"><button class="submit">Short Term Goals</button></a>
-                    </div>
-                </div>
                 {% endfor %}
+            {% endif %}
         </div>
         <!--? Need ideas for the right-col -->
         <div id="right-col">

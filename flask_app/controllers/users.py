@@ -36,6 +36,7 @@ def render_dashboard():
     else:
         print(session['user_id'])
         user = User.get_user_with_ltgs_by_user_id(session['user_id'])
+        pprint.pp(user.long_term_goals)
         return render_template("dashboard.html", user = user)
     
 @app.route('/logout')
