@@ -150,6 +150,8 @@ class User:
                 session['user_id'] = this_user.id
                 session['user_name'] = f"{this_user.first_name} {this_user.last_name}"
                 return True
+            else:
+                flash('Your login failed.')
         else:
-            flash('Your login failed.', 'login')
+            flash('Your login failed')
             return False
